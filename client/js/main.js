@@ -40,17 +40,21 @@ menuTerm.click(function() {
     createTerm($('#termContainer-' + termNum)[0]);
 });
 
-function createTerm(termContainer) {
+async function createTerm(termContainer) {
     termNum++;
 
     var term = new Terminal({
         fontFamily: 'Go-Mono, monospace',
+        fontSize: 12,
         theme: {
             foreground: '#0f0'
         }
     });
     term.open(termContainer);
     term.focus();
+
+    term.history = [];
+    term.pwd = "/";
 
     var termFit = new FitAddon.FitAddon();
     term.loadAddon(termFit);
@@ -59,5 +63,30 @@ function createTerm(termContainer) {
     var localEcho = new LocalEchoController();
     term.loadAddon(localEcho);
 
-    localEcho.read('$ ');
+    term.onKey(e => {input = termKeyEvent(e, term, localEcho)});
+
+    while (true) {
+        await localEcho.read(term.pwd + '$ ')
+            .then(input => gsh(term, localEcho, input))
+            .catch(error => void(0));
+    }
+}
+
+bootTime = new Date();
+function uptime() {
+    var delta = Math.abs(bootTime - new Date()) / 1000;
+    var days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+    var hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+    var minutes = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+    var seconds = Math.floor(delta % 60);
+
+    result = "";
+    if (days > 0) { result += days + "d " }
+    if (hours > 0) { result += hours + "h " }
+    if (minutes > 0) { result += minutes  + "m " }
+    if (seconds > 0) { result += seconds + "s " }
+    return result;
 }
