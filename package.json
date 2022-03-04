@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "golden-layout": "^1.5.9",
-    "local-echo": "github:gelatolabs/local-echo",
-    "xterm": "^4.18.0",
-    "xterm-addon-fit": "^0.5.0"
-  }
-}

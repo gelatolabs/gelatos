@@ -1,0 +1,18 @@
+{
+  "name": "gelatos",
+  "version": "1.0.0",
+  "description": "The Gelato Operating System",
+  "homepage": "https://github.com/gelatolabs/gelatos",
+  "bugs": "https://github.com/gelatolabs/gelatos/issues",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "github:gelatolabs/gelatos"
+  },
+  "dependencies": {
+    "golden-layout": "^1.5.9",
+    "local-echo": "github:gelatolabs/local-echo",
+    "xterm": "^4.18.0",
+    "xterm-addon-fit": "^0.5.0"
+  }
+}
