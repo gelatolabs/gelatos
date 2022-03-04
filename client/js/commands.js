@@ -28,7 +28,7 @@ commands.reboot.run = function(args, term, echo) {
 };
 
 commands.screenfetch.run = function(args, term, echo) {
-    var theme = document.querySelector('.theme:not([disabled])').id.split("-")[1];
+    var theme = document.querySelector('.theme:not([disabled])').id.split('-')[1];
 
     echo.println(`
 [0m[1m            #########           [0m[0m[37m [0m[37mgelato[0m[1m@[0m[0m[37m`+location.hostname+`[0m[0m

@@ -94,11 +94,8 @@ code, kbd, pre, samp, tt, var {
     background: #222;
 }
 
-#menuContainer span {
-    padding: 0 8px 0 4px;
-    color: #0f0;
-    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
-    font-size: 20px;
+#menuContainer > img {
+    padding: 4px;
 }
 
 #menuContainer li {
