@@ -28,6 +28,7 @@ commands.reboot.run = function(args, term, echo) {
 };
 
 commands.screenfetch.run = function(args, term, echo) {
+    var resolution = document.body.clientWidth + "x" + document.body.clientHeight;
     var theme = document.querySelector('.theme:not([disabled])').id.split('-')[1];
 
     echo.println(`
@@ -35,12 +36,12 @@ commands.screenfetch.run = function(args, term, echo) {
 [0m[1m        #################       [0m[0m[37m [0m[37mOS:[0m GelatOS[0m[0m
 [0m[1m     ####               ####    [0m[0m[37m [0m[37mUptime:[0m `+uptime()+`[0m[0m
 [0m[1m   ###       #######       ###  [0m[0m[37m [0m[37mShell:[0m gsh[0m[0m
-[0m[1m  ###     #############     ### [0m[0m[37m [0m[37mResolution:[0m `+document.body.clientWidth+`x`+document.body.clientHeight+`[0m[0m
+[0m[1m  ###     #############     ### [0m[0m[37m [0m[37mResolution:[0m `+resolution+`[0m[0m
 [0m[1m ###     ###############     ###[0m[0m[37m [0m[37mWM:[0m GoldenLayout[0m[0m
 [0m[1m ###     ###############     ###[0m[0m[37m [0m[37mCSS Theme:[0m `+theme+` [0m
-[0m[1m ###     ###############     ###[0m[0m[37m [0m[37mTerminal:[0m Xterm.js[0m[0m
-[0m[1m  ###  ###################  ### [0m[0m[37m [0m[37mFont:[0m Go 12[0m[0m
-[0m[1m   ###  ###  ### ###  ###  ###  [0m[0m
+[0m[1m ###     ###############     ###[0m[0m[37m [0m[37mIcon Theme:[0m La Capitaine [0m
+[0m[1m  ###  ###################  ### [0m[0m[37m [0m[37mTerminal:[0m Xterm.js[0m[0m
+[0m[1m   ###  ###  ### ###  ###  ###  [0m[0m[37m [0m[37mFont:[0m Go 12[0m[0m
 [0m[1m     ####               ####    [0m[0m
 [0m[1m        #################       [0m[0m
 [0m[1m            #########          [0m[0m
