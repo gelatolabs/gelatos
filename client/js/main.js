@@ -9,12 +9,16 @@ var layout = new GoldenLayout(config, $('#layoutContainer'));
 
 layout.registerComponent('window', function(container, state) {
     container.getElement().html(state.content);
+
+    container.on('tab', function(tab) {
+        tab.element.prepend($('<img src="img/apps/' + container._config.title + '.png" />'));
+    });
 });
 
 layout.init();
 
 /* GelatoHello */
-var menuHello = $('<li>GelatoHello</li>');
+var menuHello = $('<li><img src="img/apps/GelatoHello.png" />GelatoHello</li>');
 $('#menuContainer').append(menuHello);
 menuHello.click(function() {
     layout.root.contentItems[0].addChild({
@@ -27,7 +31,7 @@ menuHello.click(function() {
 
 /* GelatoTerm */
 var termNum = 0;
-var menuTerm = $('<li>GelatoTerm</li>');
+var menuTerm = $('<li><img src="img/apps/GelatoTerm.png" />GelatoTerm</li>');
 $('#menuContainer').append(menuTerm);
 menuTerm.click(function() {
     layout.root.contentItems[0].addChild({

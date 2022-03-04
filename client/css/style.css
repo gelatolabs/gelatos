@@ -99,6 +99,9 @@ code, kbd, pre, samp, tt, var {
 }
 
 #menuContainer li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     border-bottom: 1px solid #000;
     border-top: 1px solid #333;
     cursor: pointer;
@@ -107,10 +110,13 @@ code, kbd, pre, samp, tt, var {
     background: #1a1a1a;
     font-size: 12px;
 }
-
 #menuContainer li:hover {
     background: #111;
     color: #bbb;
+}
+
+#menuContainer li img {
+    height: 16px;
 }
 
 #layoutContainer {
@@ -119,6 +125,11 @@ code, kbd, pre, samp, tt, var {
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+.lm_tab > img:first-child {
+    height: 14px;
+    margin-right: 4px;
 }
 
 .termContainer {
