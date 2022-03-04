@@ -41,6 +41,8 @@ menuTerm.click(function() {
 });
 
 function createTerm(termContainer) {
+    termNum++;
+
     var term = new Terminal({
         fontFamily: 'Go-Mono, monospace',
         theme: {
@@ -54,5 +56,8 @@ function createTerm(termContainer) {
     term.loadAddon(termFit);
     termFit.fit(termContainer.clientWidth, termContainer.clientHeight);
 
-    termNum++;
+    var localEcho = new LocalEchoController();
+    term.loadAddon(localEcho);
+
+    localEcho.read('$ ');
 }
