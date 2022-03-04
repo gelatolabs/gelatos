@@ -77,18 +77,6 @@ code, kbd, pre, samp, tt, var {
     font-family: Go-Mono, monospace;
 }
 
-@media (prefers-color-scheme: light) {
-    .lm_content {
-        color: #000;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .lm_content {
-        color: #fff;
-    }
-}
-
 #wrapper {
     height: 100%;
     position: relative;

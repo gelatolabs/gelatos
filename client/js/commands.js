@@ -4,6 +4,7 @@ commands = {
     pwd: { description: "return working directory name" },
     reboot: { description: "reboot the machine" },
     screenfetch: { description: "display system information" },
+    settheme: { description: "change the visual theme (dark, light, classic, soda, translucent)" },
     uptime: { description: "tell how long the system has been running" },
     whatis: { description: "describe commands" }
 };
@@ -27,10 +28,7 @@ commands.reboot.run = function(args, term, echo) {
 };
 
 commands.screenfetch.run = function(args, term, echo) {
-    var theme = "Light";
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        theme = "Dark";
-    }
+    var theme = document.querySelector('.theme:not([disabled])').id.split("-")[1];
 
     echo.println(`
 [0m[1m            #########           [0m[0m[37m [0m[37mgelato[0m[1m@[0m[0m[37m`+location.hostname+`[0m[0m
@@ -47,6 +45,18 @@ commands.screenfetch.run = function(args, term, echo) {
 [0m[1m        #################       [0m[0m
 [0m[1m            #########          [0m[0m
         `);
+};
+
+commands.settheme.run = function(args, term, echo) {
+    var themes = Array.prototype.slice.call(document.querySelectorAll('.theme')).map(function(theme) {
+        return theme.id;
+    });
+    if (themes.includes('theme-' + args[0])) {
+        document.querySelectorAll('.theme').forEach((theme) => {
+            theme.disabled = 'disabled';
+        });
+        document.querySelector('#theme-' + args[0]).disabled = undefined;
+    }
 };
 
 commands.uptime.run = function(args, term, echo) {

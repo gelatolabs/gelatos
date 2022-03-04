@@ -1,3 +1,4 @@
+/* GoldenLayout setup */
 var config = {
     content: [{
         type: 'row',
@@ -72,6 +73,13 @@ async function createTerm(termContainer) {
     }
 }
 
+/* Use OS dark/light theme preference by default */
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    document.querySelector('#theme-dark').disabled = 'disabled';
+    document.querySelector('#theme-light').disabled = undefined;
+}
+
+/* Track uptime */
 bootTime = new Date();
 function uptime() {
     var delta = Math.abs(bootTime - new Date()) / 1000;
